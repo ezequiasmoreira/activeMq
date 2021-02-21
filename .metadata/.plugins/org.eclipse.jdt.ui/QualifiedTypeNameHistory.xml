@@ -9,5 +9,10 @@
 <fullyQualifiedTypeName name="javax.jms.Session"/>
 <fullyQualifiedTypeName name="javax.jms.Destination"/>
 <fullyQualifiedTypeName name="javax.jms.MessageConsumer"/>
+<fullyQualifiedTypeName name="javax.jms.MessageListener"/>
+<fullyQualifiedTypeName name="javax.jms.TextMessage"/>
+<fullyQualifiedTypeName name="javax.jms.JMSException"/>
+<fullyQualifiedTypeName name="java.lang.SuppressWarnings"/>
+<fullyQualifiedTypeName name="javax.jms.MessageProducer"/>
 <fullyQualifiedTypeName name="javax.jms.Message"/>
 </qualifiedTypeNameHistroy>
