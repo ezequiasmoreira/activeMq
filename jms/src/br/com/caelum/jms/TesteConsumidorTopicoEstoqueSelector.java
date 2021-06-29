@@ -10,30 +10,42 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
-import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+import javax.jms.Topic;
 import javax.naming.InitialContext;
 
-public class TesteProdutorTopico {
+public class TesteConsumidorTopicoEstoqueSelector {
 	
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
 		InitialContext context = new InitialContext();
 		ConnectionFactory factory = (ConnectionFactory)context.lookup("ConnectionFactory");
 		Connection connection = factory.createConnection();
+		connection.setClientID("estoque");
 		connection.start();
 		
 		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 		
-		Destination topico = (Destination)context.lookup("loja");		
+		Topic topico = (Topic)context.lookup("loja");		
+		MessageConsumer consumer = session.createDurableSubscriber(topico,"assinatura-selector","ebook=false",false);
 		
-		MessageProducer producer = session.createProducer(topico);
+		consumer.setMessageListener(new MessageListener() {			
+			@Override
+			//Acessar a classe Message e adicionar o caminho (jms/jms1.1/src/share) 
+			public void onMessage(Message message) {
+				
+				TextMessage textMessage = (TextMessage)message;
+				try {
+					System.out.println(textMessage.getText());
+				}catch(JMSException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		});		
 		
-		
-		Message message = session.createTextMessage("<pedido><id><ebook>false</ebook></id></pedido>");
-		message.setBooleanProperty("ebook", false);
-		producer.send(message);
+		new Scanner(System.in).nextLine();
 		
 		session.close();
 		connection.close();
