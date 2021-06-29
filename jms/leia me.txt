@@ -1,0 +1,6 @@
+1) Baixar o apache-activemq-5.12.0 e extraia em um pasta de fácil acesso pelo terminal (por exemplo C:\mensageria).
+2) No Windows é preciso executar o script InstallService.bat no terminal da pasta win32 ou win64 antes de seguir os próximos passos.
+3) Abra um terminal e entre na pasta bin da pasta do ActiveMQ.
+4) Inicie o ActiveMQ pelo comando: (windows) activemq start
+5) Abra um navegador e acesse: http://localhost:8161/admin
+6) Informe Login: admin e Senha admin

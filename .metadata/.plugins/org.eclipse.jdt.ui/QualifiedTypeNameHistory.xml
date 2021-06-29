@@ -15,4 +15,5 @@
 <fullyQualifiedTypeName name="java.lang.SuppressWarnings"/>
 <fullyQualifiedTypeName name="javax.jms.MessageProducer"/>
 <fullyQualifiedTypeName name="javax.jms.Message"/>
+<fullyQualifiedTypeName name="javax.jms.Topic"/>
 </qualifiedTypeNameHistroy>
