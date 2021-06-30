@@ -10,10 +10,13 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
+import javax.jms.ObjectMessage;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.jms.Topic;
 import javax.naming.InitialContext;
+
+import br.com.caelum.modelo.Pedido;
 
 public class TesteConsumidorTopicoComercial {
 	
@@ -35,9 +38,19 @@ public class TesteConsumidorTopicoComercial {
 			//Acessar a classe Message e adicionar o caminho (jms/jms1.1/src/share) 
 			public void onMessage(Message message) {
 				
-				TextMessage textMessage = (TextMessage)message;
+				//receber uma string 
+				/*TextMessage textMessage = (TextMessage)message;
 				try {
 					System.out.println(textMessage.getText());
+				}catch(JMSException e) {
+					e.printStackTrace();
+				}*/
+				
+				//receber um objeto 
+				ObjectMessage objectMessage = (ObjectMessage)message;
+				try {
+					Pedido pedido = (Pedido)objectMessage.getObject();
+					System.out.println(pedido);
 				}catch(JMSException e) {
 					e.printStackTrace();
 				}
