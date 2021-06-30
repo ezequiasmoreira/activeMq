@@ -42,7 +42,7 @@ public class TesteProdutorTopico {
 		
 		Pedido pedido = new PedidoFactory().geraPedidoComValores();
 		
-		//Enviar para o consumidor um XML
+		//Enviar para o consumidor um XML.
 		/*StringWriter writer = new StringWriter();
 		JAXB.marshal(pedido, writer);		
 		String xml = writer.toString();
